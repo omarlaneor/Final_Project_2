@@ -1,0 +1,76 @@
+body {
+  background-color: #c0b7b1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.logo img {
+  width: 250px;
+  height: 250px;
+  margin-right: 40px;
+  display: flex;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.container {
+  width: 400px;
+  height: 220px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.titulo {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.inputs {
+  margin-bottom: 20px;
+}
+
+input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.btnIngresar {
+  margin-top: 20px;
+  text-align: right;
+}
+
+button {
+  height: 30px;
+  width: 40%;
+  background-color: #095256;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #087f8c;
+}
