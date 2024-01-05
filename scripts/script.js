@@ -20,30 +20,6 @@ closeModal.addEventListener("click", (e) => {
   modal.classList.remove("modal--show");
 });
 
-// ----------------------- For Editing ------------------------------
-
-const openModalEdits = [...document.querySelectorAll(".btnIcon")];
-const modalEdit = document.querySelector(".modal-edit");
-const closeModalxEdit = document.querySelector(".modal_close_x_edit");
-const closeModalEdit = document.querySelector(".modal_close_edit");
-
-openModalEdits.forEach((openModalEdit) => {
-  openModalEdit.addEventListener("click", (e) => {
-    e.preventDefault();
-    modalEdit.classList.add("modal--show");
-  });
-});
-
-closeModalxEdit.addEventListener("click", (e) => {
-  e.preventDefault();
-  modalEdit.classList.remove("modal--show");
-});
-
-closeModalEdit.addEventListener("click", (e) => {
-  e.preventDefault();
-  modalEdit.classList.remove("modal--show");
-});
-
 // ----------------------- For Deleting ------------------------------
 
 function confirmDeleting() {

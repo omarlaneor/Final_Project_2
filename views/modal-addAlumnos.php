@@ -128,7 +128,7 @@ $query = mysqli_query($conn, $sql);
                             <td><?= getName($row['id_clase'], $conn) ?></td>
 
                             <td class="acciones">
-                                <a href="../controllers/modal-alumno.php" class="btnIcon" data-alumno-id="<?= $row['id']; ?>">
+                                <a href="../controllers/modal-alumno.php?id=<?= $row['id']; ?>" class="btnIcon" data-alumno-id="<?= $row['id']; ?>">
                                     <img src="/assets/icono-editar-datos.svg" alt="Edit Info" class="editIcon">
                                 </a>
                                 <a href="/controllers/deleteAlumnos.php?id=<?= $row['id'] ?>" class="btnIconDel" onclick="return confirmDeleting()">

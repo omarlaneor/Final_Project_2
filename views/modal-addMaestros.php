@@ -126,7 +126,7 @@ $query = mysqli_query($conn, $sql);
                             <td><?= $row['fecha'] ?></td>
                             <td><?= getName($row['id_clase'], $conn) ?></td>
                             <td class="acciones">
-                                <a href="/controllers/editMaestros.php?id=<?= $row['id'] ?>" class="btnIcon">
+                                <a href="/controllers/modal-editMaestro.php?id=<?= $row['id']; ?>" class="btnIcon" data-maestro-id="<?= $row['id']; ?>">
                                     <img src="/assets/icono-editar-datos.svg" alt="Edit Info" class="editIcon">
                                 </a>
                                 <a href="/controllers/deleteMaestro.php?id=<?= $row['id'] ?>" class="btnIconDel" onclick="return confirmDeleting()">
@@ -211,55 +211,6 @@ $query = mysqli_query($conn, $sql);
 
     </section>
 
-    <section class="modal-edit" id="editar <?= $row['id']; ?> ">
-        <div class="modal_container-edit">
-
-            <form class="modal-form-edit" action="../controllers/editMaestros.php" method="post">
-
-                <div class="header-form-edit">
-                    <h2>Editar Maestro</h2>
-                    <a href="#" class="modal_close_x_edit">x</a>
-                </div>
-
-                <input type="hidden" name="id" value="<?= $row['id']; ?>">
-
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" value="<?= $row['email']; ?>">
-
-
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name">
-
-                <label for="lastname">Apellido:</label>
-                <input type="text" id="lastname" name="lastname">
-
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion">
-
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
-
-                <div class="clase-container-edit">
-                    <label for="id_clase">Clase Asignada:</label>
-                    <select id="id_clase" name="id_clase" required>
-                        <option value="0">Seleccione una clase...</option>
-                        <?php
-                        $query_clases = mysqli_query($conn, "SELECT * FROM clases");
-
-                        while ($row_clase = mysqli_fetch_array($query_clases)) {
-                            echo "<option value='" . $row_clase['id'] . "'>" . $row_clase['clase'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="botones-edit">
-                    <a href="#" class="modal_close_edit">Close</a>
-                    <input type="submit" name="accion" class="modal_guardar" value="Guardar">
-                </div>
-            </form>
-        </div>
-    </section>
-
     <script src="/scripts/script.js"></script>
     <script src="/scripts/search.js"></script>
 
@@ -267,3 +218,9 @@ $query = mysqli_query($conn, $sql);
 
 
 </html>
+
+
+
+
+
+data-maestro-id="<?= $row['id']; ?>"

@@ -18,7 +18,7 @@ $row_clase_nombre = mysqli_fetch_array($query_clase_nombre);
 $nombre_clase = $row_clase_nombre['clase'];
 
 $query = "INSERT INTO maestros (id, email, name, lastname, direccion, fecha, id_clase)
-VALUES ('NULL', '$email', '$name', '$lastname', '$direccion', '$fecha', '$id_clase')";
+VALUES (0, '$email', '$name', '$lastname', '$direccion', '$fecha', '$id_clase')";
 
 if (mysqli_query($conn, $query)) {
     header("location: /views/modal-addMaestros.php");

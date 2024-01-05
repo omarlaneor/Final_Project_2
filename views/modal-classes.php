@@ -133,7 +133,7 @@ $query = mysqli_query($conn, $sql);
                             <td><?= $row['name'] ?></td>
 
                             <td class="acciones">
-                                <a href="/controllers/editClases.php?id=<?= $row['id_clase'] ?>" class="btnIcon">
+                                <a href="/controllers/editClases.php?id=<?= $row['id'] ?>" class="btnIcon" data-clase-id="<?= $row['id']; ?>">
                                     <img src="/assets/icono-editar-datos.svg" alt="Edit Info" class="editIcon">
                                 </a>
                                 <a href="/controllers/deleteClases.php?id=<?= $row['id_clase'] ?>" class="btnIcon" onclick="return confirmDeleting()">
@@ -175,7 +175,7 @@ $query = mysqli_query($conn, $sql);
     <div class="modal-clase" id="modal-clase">
         <div class="modal_container">
 
-            <form class="modal-form" action="../controllers/addAlumnos.php" method="post">
+            <form class="modal-form" action="../controllers/addClasses.php" method="post">
 
                 <div class="header-form">
                     <h2>Agregar Clase</h2>
