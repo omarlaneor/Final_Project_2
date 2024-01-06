@@ -19,9 +19,3 @@ closeModal.addEventListener("click", (e) => {
   e.preventDefault();
   modal.classList.remove("modal--show");
 });
-
-// ----------------------- For Deleting ------------------------------
-
-function confirmDeleting() {
-  return confirm("¿Estás realmente seguro de eliminar este maestro?");
-}

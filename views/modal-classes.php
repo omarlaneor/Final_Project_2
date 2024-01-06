@@ -18,6 +18,16 @@ $sql = "SELECT clases.id AS id_clase, clases.clase, maestros.name, maestros.last
 
 $query = mysqli_query($conn, $sql);
 
+$sql_alumnos = "SELECT id_clase, COUNT(*) AS total_alumnos
+                FROM alumnos
+                GROUP BY id_clase";
+
+$query_alumnos = mysqli_query($conn, $sql_alumnos);
+
+$total_alumnos_por_clase = [];
+while ($row_alumnos = mysqli_fetch_assoc($query_alumnos)) {
+    $total_alumnos_por_clase[$row_alumnos['id_clase']] = $row_alumnos['total_alumnos'];
+}
 
 ?>
 
@@ -130,12 +140,13 @@ $query = mysqli_query($conn, $sql);
                             <td><?= $row['id_clase'] ?></td>
                             <td><?= $row['clase'] ?></td>
                             <td><?= $row['name'] . ' ' . $row['lastname'] ?></td>
-                            <td><?= $row['name'] ?></td>
+                            <td><?= isset($total_alumnos_por_clase[$row['id_clase']]) ? $total_alumnos_por_clase[$row['id_clase']] : 0 ?></td>
 
                             <td class="acciones">
-                                <a href="/controllers/editClases.php?id=<?= $row['id'] ?>" class="btnIcon" data-clase-id="<?= $row['id']; ?>">
+                                <a href="/controllers/modal-editClasses.php?id=<?= isset($row['id']) ? $row['id'] : '' ?>" class="btnIcon" data-clase-id="<?= isset($row['id']) ? $row['id'] : ''; ?>">
                                     <img src="/assets/icono-editar-datos.svg" alt="Edit Info" class="editIcon">
                                 </a>
+
                                 <a href="/controllers/deleteClases.php?id=<?= $row['id_clase'] ?>" class="btnIcon" onclick="return confirmDeleting()">
                                     <img src="/assets/icono-delete.svg" alt="Delete Info" class="deleteIcon">
                                 </a>
@@ -182,8 +193,22 @@ $query = mysqli_query($conn, $sql);
                     <a href="#" class="modal_clase_close_x">x</a>
                 </div>
 
-                <label for="clase">Clase:</label>
+                <label for="clase">Nombre de la clase:</label>
                 <input type="text" name="clase" id="clase" placeholder="Escribe el nombre de la clase...">
+
+                <div class="clase-container">
+                    <label for="id_maestro">Maestros disponibles para la clase:</label>
+                    <select id="id_maestro" name="id_maestro" required>
+                        <option value="0">Sin Asignar...</option>
+                        <?php
+                        $query_maestros = mysqli_query($conn, "SELECT * FROM maestros");
+
+                        while ($row_maestro = mysqli_fetch_array($query_maestros)) {
+                            echo "<option value='" . $row_maestro['id'] . "'>" . $row_maestro['name'] . " " . $row_maestro['lastname'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
 
                 <div class="botones">
                     <a href="#" class="modal_clase_close">Close</a>
@@ -221,6 +246,10 @@ $query = mysqli_query($conn, $sql);
             e.preventDefault();
             modal.classList.remove("modal--show");
         });
+
+        function confirmDeleting() {
+            return confirm("¿Estás realmente seguro de eliminar esta clase?");
+        }
     </script>
 
     <script src="/scripts/search.js"></script>

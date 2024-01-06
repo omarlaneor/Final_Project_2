@@ -26,11 +26,11 @@ $row = mysqli_fetch_array($query);
         </div>
 
 
-        <form class="modal-form" action="../controllers/editarAlumno.php" method="post" style="background-color: #c0b7b1; border: 2px solid #ccc; padding: 14px 30px 30px 30px;">
+        <form class="modal-form" action="../controllers/editClasses.php" method="post" style="background-color: #c0b7b1; border: 2px solid #ccc; padding: 14px 30px 30px 30px;">
 
             <div class="header-form" style="text-align: right;">
 
-                <a href="../views/modal-addAlumnos.php" style="display: inline-block; padding: 4px 10px; border-radius: 50%; background-color: red; color: #fff; text-decoration: none; margin-top: 20px;">x</a>
+                <a href="../views/modal-classes.php" style="display: inline-block; padding: 4px 10px; border-radius: 50%; background-color: red; color: #fff; text-decoration: none; margin-top: 20px;">x</a>
 
                 <h2 style="display: flex;">Editar Clase</h2>
             </div>
@@ -50,7 +50,7 @@ $row = mysqli_fetch_array($query);
             </label>
 
             <div class="botones" style="text-align: right;">
-                <a href="/views/modal-addAlumnos.php" class="modal_close_edit_alumn" style="display: inline-block; padding: 6px 12px; background-color: red; color: #fff; text-decoration: none; border-radius: 5px;">Close</a>
+                <a href="/views/modal-classes.php" class="modal_close_edit_alumn" style="display: inline-block; padding: 6px 12px; background-color: red; color: #fff; text-decoration: none; border-radius: 5px;">Close</a>
                 <input type="submit" name="accion" class="modal_guardar" value="Guardar" style="display: inline-block; padding: 6px 12px; background-color: #00ced1; color: #fff; text-decoration: none; border-radius: 5px;">
             </div>
 
@@ -60,7 +60,7 @@ $row = mysqli_fetch_array($query);
 
     <script>
         const openModalEdits = [...document.querySelectorAll(".btnIcon")];
-        const modalEdit = document.querySelector(".modal-edit-clase");
+        const modalEdit = document.querySelector(".modal-edit-clases");
         const closeModalxEdit = document.querySelector(".modal_close_x_edit_alumn");
         const closeModalEdit = document.querySelector(".modal_close_edit_alumn");
 

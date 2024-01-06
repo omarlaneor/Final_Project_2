@@ -244,7 +244,7 @@ $query = mysqli_query($conn, $sql);
         // ----------------------- For Deleting ------------------------------
 
         function confirmDeleting() {
-            return confirm("¿Estás realmente seguro de eliminar este maestro?");
+            return confirm("¿Estás realmente seguro de eliminar este Alumno?");
         }
     </script>
 

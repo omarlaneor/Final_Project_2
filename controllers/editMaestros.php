@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error en la preparación de la consulta: " . mysqli_error($conn));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssiii", $email, $name, $lastname, $direccion, $fecha, $id_clase, $id);
+    mysqli_stmt_bind_param($stmt, "sssssii", $email, $name, $lastname, $direccion, $fecha, $id_clase, $id);
 
     if (mysqli_stmt_execute($stmt)) {
 

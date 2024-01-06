@@ -186,7 +186,7 @@ $query = mysqli_query($conn, $sql);
                 <label for="direccion">Dirección:</label>
                 <input type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección" required>
 
-                <label for="fecha">Fecha:</label>
+                <label for="fecha">Fecha de Nacimiento:</label>
                 <input type="date" id="fecha" name="fecha" required>
 
                 <div class="clase-container">
@@ -213,6 +213,11 @@ $query = mysqli_query($conn, $sql);
 
     <script src="/scripts/script.js"></script>
     <script src="/scripts/search.js"></script>
+    <script>
+        function confirmDeleting() {
+            return confirm("¿Estás realmente seguro de eliminar este maestro?");
+        }
+    </script>
 
 </body>
 

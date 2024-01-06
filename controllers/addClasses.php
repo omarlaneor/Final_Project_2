@@ -8,11 +8,16 @@ $conn = mysqli_connect("localhost", "root", "", "university");
 
 $clase = $_POST['clase'];
 
-$query_clase_nombre = mysqli_query($conn, "SELECT clase FROM clases WHERE id = '$id_clase'");
-$row_clase_nombre = mysqli_fetch_array($query_clase_nombre);
-$nombre_clase = $row_clase_nombre['clase'];
+// Asegúrate de tener el ID del maestro seleccionado
+$id_maestro = $_POST['id_maestro'];
 
-$query = "INSERT INTO clases VALUES ('', '$clase')";
+// Obtener el nombre y apellido del maestro
+$query_maestro_nombre = mysqli_query($conn, "SELECT name, lastname FROM maestros WHERE id = '$id_maestro'");
+$row_maestro_nombre = mysqli_fetch_array($query_maestro_nombre);
+$nombre_maestro = $row_maestro_nombre['name'] . " " . $row_maestro_nombre['lastname'];
+
+// Prepara la consulta para insertar en la tabla de clases
+$query = "INSERT INTO clases (clase, maestro_asignado) VALUES ('$clase', '$nombre_maestro')";
 
 if (mysqli_query($conn, $query)) {
     header("location: /views/modal-classes.php");
