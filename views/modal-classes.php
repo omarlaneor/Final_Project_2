@@ -14,8 +14,6 @@ $sql = "SELECT clases.id AS id_clase, clases.clase, maestros.name, maestros.last
         FROM clases
         LEFT JOIN maestros ON clases.id = maestros.id_clase";
 
-
-
 $query = mysqli_query($conn, $sql);
 
 $sql_alumnos = "SELECT id_clase, COUNT(*) AS total_alumnos

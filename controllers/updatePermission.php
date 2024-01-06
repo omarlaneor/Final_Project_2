@@ -19,6 +19,7 @@ if (!$conn) {
 }
 ?>
 
+<!-- Pendiente por organizar -->
 
 
 <div class="modal-edit" id="editar <?= $row['id']; ?> ">
